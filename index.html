@@ -19,7 +19,7 @@
 			margin-left: auto;
 			margin-right: auto;
 		}
-		label {
+		.inputlabel {
 			display:inline-block;
 			width:100px;
 			margin-right:10px;
@@ -33,15 +33,17 @@
 		}
 	</style>
 	<body>
-		<div class = "center"><form action="login.js">
+		<div class = "center"><form action="find_element.php">
 			<img src="covid_tracker_logo.png" alt="Covid Tracker" class = "center_image">
 			<div class="g-signin2" data-onsuccess="onSignIn" style= "margin-left: 30%;"></div> <br><br>
-			<label for="email">Email Address </label>
+			<label class = "inputlabel" for="email">Email Address </label>
 				<input type="text" id="email" name="email"> <br><br>
-			<label for="password">Password </label>
+			<label class = "inputlabel" for="password">Password </label>
 				<input type="password" id="password" name="password"> <br><br>
+			<label for ="u_p_incorrect" name = "u_p_incorrect" id = "u_p_incorrect" style = "display: none"> Incorrect Username or Password </label> <br><br>
 			<a href = "createAccount.html"> Don't have an Account? Create One! </a> <br><br>
 			<input type = "submit" value="Submit">
+
 		</form> </div>
 	</body>
 <script>
@@ -51,6 +53,9 @@
 	  console.log('Name: ' + profile.getName());
 	  console.log('Image URL: ' + profile.getImageUrl());
 	  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+	}
+	function unhide_u_p_incorrect() {
+		document.getElementById("u_p_incorrect").style.display = "block";
 	}
 </script>
 
