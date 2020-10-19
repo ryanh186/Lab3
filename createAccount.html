@@ -1,6 +1,8 @@
 
 <html>
 	<head>
+		<script src="https://apis.google.com/js/platform.js"></script>
+		<meta name="google-signin-client_id" content="183451073873-6vrrh61cpnv1legakno68joiojt3np67.apps.googleusercontent.com">
 			<title> Create Account </title>
 	</head>
 	<style>
@@ -36,6 +38,7 @@
 		<div class = "center"><form action="add_element.php" method = "post">
 			<img src="covid_tracker_logo.png" alt="Covid Tracker" class = "center_image">
       <h3> Create Account </h3>
+			<div class="g-signin2" data-onsuccess="onSignIn" style= "margin-left: 30%;"></div> <br><br>
       <label for="Full Name"> Full Name </label>
       <input type="text" id="name" name="name"> <br><br>
 			<label for="email">Email Address </label>
@@ -48,5 +51,20 @@
   		<input type="password" id="password_reenter" name="password_reenter"> <br><br>
 			<input type = "submit" value="Submit">
 		</form> </div>
+		<script>
+			function onSignIn(googleUser) {
+			  var profile = googleUser.getBasicProfile();
+			  var id = profile.getId(); // Do not send to your backend! Use an ID token instead.
+			  var name = profile.getName();
+			  var email = profile.getEmail()); // This is null if the 'email' scope is not present.
+				$.ajax({
+            type : "POST",  //type of method
+            url  : "add_element_google.php",  //your page
+            data : { id : id, email : email, name : name },// passing the values
+			}
+			function unhide_u_p_incorrect() {
+				document.getElementById("u_p_incorrect").style.display = "block";
+			}
+		</script>
 	</body>
 </html>
