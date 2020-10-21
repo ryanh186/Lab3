@@ -26,7 +26,6 @@
         border-radius: 4px;
         resize: vertical;
         font-size: x-large;
-        text-transform: uppercase;
     }
     input[type=number], select, textarea {
         width: 25%;
@@ -99,24 +98,36 @@
         margin-right: auto;
     }
 </style>
+<script>
+    function outputConsole() {
+        var x = document.getElementById("fn").value + document.getElementById("ln").value +
+            document.getElementById("email").value + document.getElementById("phone").value;
+        document.getElementById("demo").innerHTML = x;
+
+    }
+</script>
 <head>
     <img src="covid_tracker_logo.png" alt="Italian Trulli" class="center">
     <meta charset="UTF-8">
     <title>Restaurant Survey</title>
 </head>
+
 <body>
-<form action="/action_page.php">
+
+
+
+<form action="SurveyBackend.php" id="form" onsubmit="outputConsole()">
     First name:<br>
-    <input type="text" name="firstname" required><br>
+    <input type="text" id="fn" name="firstname" required><br>
 
     Last name:<br>
-    <input type="text" name="lastname" required><br><br>
+    <input type="text" id="ln" name="lastname" required><br><br>
 
     Email:<br>
-    <input type="email" name="email" value="joe@Email.com"><br>
+    <input type="email" id="email" name="email" value="speh@Email.com"><br>
 
     Phone Number:<br>
-    <input type="tel" name="PhoneNumber" value=""><br><br>
+    <input type="tel" id="phone" name="PhoneNumber" value=""><br><br>
 
     Party Size:<br>
     <input type="number" min="0" value="6" name="partySize"><br><br>
@@ -124,6 +135,10 @@
 
 
     <input type="submit" value="Submit">
+
 </form>
+
+<p id="demo"> </p>
+
 </body>
 </html>
