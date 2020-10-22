@@ -1,6 +1,33 @@
 
 
 
+
+<?php
+$con =mysqli_connect('localhost', 'root', 'root', 'cmsc4375_lab3', port('3306'));
+
+if (!$con)
+{
+    echo 'connection fail';
+}
+if (!mysqli_select_db($con, 'cmsc4375_lab3'))
+{
+    echo 'Database Not Selected';
+}
+$FirstName = $_POST['firstname'];
+$LastName = $_POST['lastname'];
+$Email = $_POST['email'];
+$Phone = $_POST['PhoneNumber'];
+
+$sql = "INSERT INTO customer (customerFirstName, customerLastName, customerEmail, customerPhoneNum) values ('$FirstName','$LastName', '$Email', '$Phone')";
+
+if(!mysqli_query($con,$sql)) {
+    echo 'Not Inserted';
+} else {
+    echo 'Inserted';
+}
+header("refresh;2; url=SurveyPage.html");
+?>
+
 <html>
 <style>
     p{
