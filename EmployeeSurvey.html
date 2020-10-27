@@ -2,6 +2,17 @@
 <html lang="en">
 <style>
 
+    * {
+        font-family: "Cooper Black";
+    }
+
+    form {
+        box-sizing: border-box;
+        margin: 50px;
+        font-size: x-large;
+    }
+
+
 
 
     input[type=text], select, textarea {
@@ -98,9 +109,6 @@
         background: white;
     }
 
-    form{
-        font-size: x-large;
-    }
 
     * {
         box-sizing: border-box;
@@ -114,19 +122,6 @@
         text-align: center;
     }
 
-    input[type=submit] {
-        background-color: #4CAF50;
-        color: white;
-        padding: 12px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        float: right;
-    }
-
-    input[type=submit]:hover {
-        background-color: #45a049;
-    }
 
     .container {
         border-radius: 5px;
@@ -159,6 +154,46 @@
         margin-right: auto;
     }
 
+
+    .button {
+        border-radius: 4px;
+        background-color: limegreen;
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 28px;
+        margin: auto;
+        display: flex;
+        width: 125px;
+        transition: all 0.5s;
+        cursor: pointer;
+    }
+
+    .button span {
+        cursor: pointer;
+        display: flex;
+        position: relative;
+        transition: 0.5s;
+    }
+
+    .button span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+    }
+
+    .button:hover span {
+        padding-right: 25px;
+    }
+
+    .button:hover span:after {
+        opacity: 1;
+        right: 0;
+    }
+
 </style>
 <head>
     <img src="covid_tracker_logo.png" alt="Italian Trulli" class="center">
@@ -166,7 +201,7 @@
     <title>Employee COVID-19 Survey</title>
 </head>
 <body>
-<form action="/action_page.php">
+<form action="EmployeeBackend.php" id="form" onsubmit="outputConsole()">
     First name:<br>
     <input type="text" name="firstname" value=""><br>
 
@@ -230,7 +265,7 @@
 
 
     <br>
-    <input type="submit" value="Submit">
+    <input class="button" type="submit" value="Submit">
 </form>
 </body>
 </html>

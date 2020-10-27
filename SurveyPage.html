@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <style>
-
     * {
         box-sizing: border-box;
-    }
+        margin: 20px;
+        font-family: "Cooper Black";
 
+
+    }
     form{
         font-size: x-large;
     }
@@ -19,6 +20,7 @@
         resize: vertical;
         font-size: x-large;
         text-transform: uppercase;
+        background-color: white;
     }
 
     input[type=email], select, textarea {
@@ -28,26 +30,27 @@
         border-radius: 4px;
         resize: vertical;
         font-size: x-large;
+        background-color: white;
     }
-    input[type=number], select, textarea {
+    input[type=number] {
         width: 25%;
         padding: 20px 1px 20px 20px;
         border: 1px solid #ccc;
         border-radius: 4px;
         resize: vertical;
         font-size: x-large;]
+    background-color: white;
 
 
     }
-    input[type=tel], select, textarea {
-        width: 25%;
+    input[type=tel] {
+        width: 30%;
         padding: 20px 1px 20px 20px;
         border: 1px solid #ccc;
         border-radius: 4px;
         resize: vertical;
         font-size: x-large;]
-
-
+    background-color: white;
     }
 
     label {
@@ -55,18 +58,9 @@
         display: inline-block;
     }
 
-    input[type=submit] {
-        background-color: #4CAF50;
-        color: white;
-        padding: 12px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        float: right;
-    }
 
-    input[type=submit]:hover {
-        background-color: #45a049;
+    intput {
+        background-color: white;
     }
 
     .container {
@@ -99,6 +93,45 @@
         margin-left: auto;
         margin-right: auto;
     }
+
+    .button {
+        border-radius: 4px;
+        background-color: limegreen;
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 28px;
+        margin: auto;
+        display: flex;
+        width: 125px;
+        transition: all 0.5s;
+        cursor: pointer;
+    }
+
+    .button span {
+        cursor: pointer;
+        display: flex;
+        position: relative;
+        transition: 0.5s;
+    }
+
+    .button span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+    }
+
+    .button:hover span {
+        padding-right: 25px;
+    }
+
+    .button:hover span:after {
+        opacity: 1;
+        right: 0;
+    }
 </style>
 <script>
     function outputConsole() {
@@ -115,7 +148,6 @@
 </head>
 
 <body>
-
 
 
 
@@ -137,11 +169,10 @@
 
 
 
-    <input type="submit" value="Submit">
+    <input class="button" type="submit" value="Submit">
 
 </form>
 
-<p id="demo"> </p>
 
 </body>
 </html>
