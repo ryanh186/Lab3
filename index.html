@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<script src="https://apis.google.com/js/platform.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<meta name="google-signin-client_id" content="183451073873-6vrrh61cpnv1legakno68joiojt3np67.apps.googleusercontent.com">
 			<title> Covid Tracker </title>
 	</head>
@@ -40,7 +41,6 @@
 				<input type="text" id="email" name="email"> <br><br>
 			<label class = "inputlabel" for="password">Password </label>
 				<input type="password" id="password" name="password"> <br><br>
-			<label for ="u_p_incorrect" name = "u_p_incorrect" id = "u_p_incorrect" style = "display: none"> Incorrect Username or Password </label> <br><br>
 			<a href = "createAccount.html"> Don't have an Account? Create One! </a> <br><br>
 			<input type = "submit" value="Submit">
 
@@ -48,15 +48,19 @@
 	</body>
 <script>
 	function onSignIn(googleUser) {
-	  var profile = googleUser.getBasicProfile();
-	  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-	  console.log('Name: ' + profile.getName());
-	  console.log('Image URL: ' + profile.getImageUrl());
-	  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-	}
-	function unhide_u_p_incorrect() {
-		document.getElementById("u_p_incorrect").style.display = "block";
-	}
+		var profile = googleUser.getBasicProfile();
+		var idNum = profile.getId();
+		$.ajax({
+		type: "POST",
+		url: "find_element_google.php",
+		data: {id: idNum},
+		success: function(res) {
+			if(res == 1) {
+				window.location = "SurveyPage.html";
+			}
+		}
+		});
+}
 </script>
 
 </html>

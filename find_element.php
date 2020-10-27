@@ -7,8 +7,9 @@ $result = mysqli_query($db,$sql);
 $num_rows = mysqli_num_rows($result);
 
 if($num_rows == 1) {
-  header("Location: survey.html");
+  header("Location: SurveyPage.html");
 } else {
-  header("Location: index.html");
+
+  echo '<script>window.location.replace("index.html"); alert("Incorrect login information");</script>';
 }
  ?>
