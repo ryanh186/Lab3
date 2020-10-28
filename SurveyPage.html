@@ -3,14 +3,17 @@
 <style>
     * {
         box-sizing: border-box;
-    }
-
-
         margin: 20px;
         font-family: "Cooper Black";
-
-
     }
+
+
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
 
     form{
         font-size: x-large;
@@ -48,28 +51,28 @@
         border: 1px solid #ccc;
         border-radius: 4px;
         resize: vertical;
-        font-size: x-large;]
-
-
-
+        font-size: x-large;
     }
-    input[type=tel], select, textarea {
-        width: 25%;
+    input[type=date] {
 
-    background-color: white;
-
-
-    }
-    input[type=tel] {
-        width: 30%;
+        min-width: 25%;
         padding: 20px 1px 20px 20px;
         border: 1px solid #ccc;
         border-radius: 4px;
         resize: vertical;
         font-size: x-large;
+    }
+    input[type=tel], select, textarea {
+        min-width: 25%;
         background-color: white;
+        padding: 20px 1px 20px 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+        font-size: x-large;
 
     }
+
 
     label {
         padding: 12px 12px 12px 0;
@@ -89,95 +92,20 @@
 
     input[type=submit]:hover {
         background-color: #45a049;
-
-
-    intput {
-        background-color: white;
-
     }
 
-    .container {
-        border-radius: 5px;
-        background-color: #f2f2f2;
-        padding: 20px;
-    }
-
-    .col-25 {
-        float: left;
-        width: 25%;
-        margin-top: 6px;
-    }
-
-    .col-75 {
-        float: left;
-        width: 75%;
-        margin-top: 6px;
-    }
-
-    /* Clear floats after the columns */
-    .row:after {
-        content: "";
-        display: table;
-        clear: both;
-    }
-
-    .center {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-
-    .button {
-        border-radius: 4px;
-        background-color: limegreen;
-        border: none;
-        color: #FFFFFF;
-        text-align: center;
-        font-size: 28px;
-        margin: auto;
-        display: flex;
-        width: 125px;
-        transition: all 0.5s;
-        cursor: pointer;
-    }
-
-    .button span {
-        cursor: pointer;
-        display: flex;
-        position: relative;
-        transition: 0.5s;
-    }
-
-    .button span:after {
-        content: '\00bb';
+    .center_submit {
         position: absolute;
-        opacity: 0;
-        top: 0;
-        right: -20px;
-        transition: 0.5s;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        margin: 0;
     }
 
-    .button:hover span {
-        padding-right: 25px;
-    }
-
-    .button:hover span:after {
-        opacity: 1;
-        right: 0;
-    }
 </style>
-<script>
-    function outputConsole() {
-        var x = document.getElementById("fn").value + document.getElementById("ln").value +
-            document.getElementById("email").value + document.getElementById("phone").value;
-        document.getElementById("demo").innerHTML = x;
-
-    }
-</script>
 
 <head>
-    <img src="covid_tracker_logo.png" alt="Italian Trulli" class="center">
+    <p><a href="index.html"><img src="covid_tracker_logo.png" alt="" class="center"></a></p>
     <meta charset="UTF-8">
     <title>Restaurant Survey</title>
 </head>
@@ -189,6 +117,9 @@
 
 
 <form action="SurveyBackend.php" id="form" onsubmit="outputConsole()">
+    Date:<br>
+    <input type="date" name="Date" value="date"><br>
+    <br>
     First name:<br>
     <input type="text" id="fn" name="firstname" required><br>
 
@@ -204,7 +135,9 @@
     Party Size:<br>
     <input type="number" min="0" value="6" name="partySize"><br><br>
 
-    <input type="submit" value="Submit">
+    <input class="center_submit" type="submit" value="Submit">
+
+
 </form>
 </body>
 </html>

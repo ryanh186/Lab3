@@ -70,7 +70,8 @@
     <h1>Thank you <?php echo $_GET["firstname"]. " ". $_GET["lastname"]; ?> for filling out the COVID-19 Survey</h1>
 
     <p>We will be sending any information on potential COVID development within the establishment to the desired email: <?php echo $_GET["email"]; ?> </p>
-    <p>and Emergency Text through Phone number: <?php echo $_GET["PhoneNumber"]; ?> </p>
+    <p>Emergency Text through Phone number: <?php echo $_GET["PhoneNumber"]; ?> </p>
+    <p>Date Submitted: <?php echo $_GET["Date"]; ?> </p>
 
 
 </head>
