@@ -1,6 +1,9 @@
 
 <html>
 	<head>
+		<script src="https://apis.google.com/js/platform.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<meta name="google-signin-client_id" content="183451073873-6vrrh61cpnv1legakno68joiojt3np67.apps.googleusercontent.com">
 			<title> Create Account </title>
 	</head>
 	<style>
@@ -33,9 +36,10 @@
 
 	</style>
 	<body>
-		<div class = "center"><form action="add_element.php" method = "post">
+		<div class = "center"><form name = "login_form" onsubmit="return validateLoginForm()" action="add_element.php" method = "post">
 			<img src="covid_tracker_logo.png" alt="Covid Tracker" class = "center_image">
       <h3> Create Account </h3>
+			<div class="g-signin2" data-onsuccess="onSignIn" style= "margin-left: 30%;"></div> <br><br>
       <label for="Full Name"> Full Name </label>
       <input type="text" id="name" name="name"> <br><br>
 			<label for="email">Email Address </label>
@@ -49,4 +53,42 @@
 			<input type = "submit" value="Submit">
 		</form> </div>
 	</body>
+	<script>
+		function onSignIn(googleUser) {
+			var profile = googleUser.getBasicProfile();
+			var idNum = profile.getId();
+			$.ajax({
+				type: "POST",
+				url: "add_element_google.php",
+				data: {id: idNum},
+				success: function(res) {
+					window.location = "index.html";
+				}
+			});
+		}
+		function validateLoginForm() {
+			var form = document.forms['login_form'];
+			var name = form['name'].value;
+			var email = form['email'].value;
+			var phoneNum = form['phoneNum'].value;
+			var password = form['password'].value;
+			var password_reenter = form['password_reenter'].value;
+			if(name == "") {
+				alert("Name must be filled out");
+				return false;
+			}
+			if(! /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email) ) {
+				alert("Email format incorrect");
+				return false;
+			}
+			if(phoneNum.length != 10 || isNaN(phoneNum)) {
+				alert("Phone number format incorrect. Should be XXXXXXXXXX");
+				return false;
+			}
+			if(password != password_reenter) {
+				alert("Passwords do not match");
+				return false;
+			}
+		}
+	</script>
 </html>
